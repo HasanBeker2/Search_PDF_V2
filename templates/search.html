@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PDF Search Engine</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+        form {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+        input[type="text"] {
+            font-size: 18px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 0 5px #ccc;
+            width: 500px;
+            margin-right: 10px;
+        }
+        input[type="submit"] {
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+        ul {
+            list-style-type: none;
+            margin-top: 50px;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 20px;
+            box-shadow: 0 0 5px #ccc;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        a {
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>PDF Search Engine</h1>
+    <form action="/search" method="get">
+        <input type="text" name="q" placeholder="Search PDF files...">
+        <input type="submit" value="Search">
+    </form>
+    <ul>
+        {% for result in results %}
+            <li>
+                <a href="{{ result.url }}">{{ result.title }}</a>
+                <br>
+                {{ result.snippet }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
